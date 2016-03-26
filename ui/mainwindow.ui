@@ -96,24 +96,44 @@
          </property>
          <layout class="QGridLayout" name="gridLayout_4">
           <item row="0" column="0">
-           <widget class="QLabel" name="transSpeedButton">
+           <widget class="QLabel" name="desiredTransLabel">
             <property name="text">
-             <string>Trans Speed</string>
+             <string>Desired Trans</string>
             </property>
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QLineEdit" name="transSpeedBox"/>
+           <widget class="QLineEdit" name="desiredTransBox"/>
           </item>
           <item row="1" column="0">
-           <widget class="QLabel" name="launchSpeedLabel">
+           <widget class="QLabel" name="actualTransLabel">
             <property name="text">
-             <string>Launch Speed</string>
+             <string>Actual Trans</string>
             </property>
            </widget>
           </item>
           <item row="1" column="1">
-           <widget class="QLineEdit" name="launchSpeedBox"/>
+           <widget class="QLineEdit" name="actualTransBox"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="desiredLaunchLabel">
+            <property name="text">
+             <string>Desired Launch</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="desiredLaunchBox"/>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="actualLaunchLabel">
+            <property name="text">
+             <string>Actual Launch</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLineEdit" name="actualLaunchBox"/>
           </item>
          </layout>
         </widget>
@@ -159,9 +179,6 @@
         </widget>
        </item>
       </layout>
-      <zorder>inputFrame</zorder>
-      <zorder>speedFrame</zorder>
-      <zorder>buttonFrame</zorder>
      </widget>
     </item>
     <item row="2" column="0" colspan="2">
@@ -254,6 +271,12 @@
           </item>
           <item row="0" column="1">
            <widget class="QSlider" name="minDepthSlider">
+            <property name="minimum">
+             <number>50</number>
+            </property>
+            <property name="maximum">
+             <number>300</number>
+            </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -275,6 +298,12 @@
           </item>
           <item row="1" column="1">
            <widget class="QSlider" name="maxDepthSlider">
+            <property name="minimum">
+             <number>50</number>
+            </property>
+            <property name="maximum">
+             <number>300</number>
+            </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -308,6 +337,9 @@
           </item>
           <item row="0" column="1">
            <widget class="QSlider" name="hueLoSlider">
+            <property name="maximum">
+             <number>179</number>
+            </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -329,6 +361,9 @@
           </item>
           <item row="0" column="4">
            <widget class="QSlider" name="hueHiSlider">
+            <property name="maximum">
+             <number>179</number>
+            </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -350,6 +385,9 @@
           </item>
           <item row="1" column="1">
            <widget class="QSlider" name="satLoSlider">
+            <property name="maximum">
+             <number>255</number>
+            </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -371,6 +409,9 @@
           </item>
           <item row="1" column="4">
            <widget class="QSlider" name="satHiSlider">
+            <property name="maximum">
+             <number>255</number>
+            </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -392,6 +433,9 @@
           </item>
           <item row="2" column="1">
            <widget class="QSlider" name="valLoSlider">
+            <property name="maximum">
+             <number>255</number>
+            </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -413,6 +457,9 @@
           </item>
           <item row="2" column="4">
            <widget class="QSlider" name="valHiSlider">
+            <property name="maximum">
+             <number>255</number>
+            </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>

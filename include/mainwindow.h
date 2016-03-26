@@ -19,7 +19,6 @@ enum STATE
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
-
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
@@ -31,29 +30,18 @@ private:
     Controller *controller;
     Player *player;
 
-    // depth map
-    float min_dist;
-    float max_dist;
-
-    // color
-    int h_lo;
-    int h_hi;
-    int s_lo;
-    int s_hi;
-    int v_lo;
-    int v_hi;
-
-    // translation
-    float trans;
-
-    // speed
-    float trans_speed;
-    float launch_speed;
-
 private slots:
     void UpdateFeedback(float trans, float speed);
+    void UpdateVideo(const QImage image);
     void UpdateDepth(const QImage image);
-    void UpdateColor(const QImage image);
+    void on_minDepthSlider_valueChanged(int value);
+    void on_maxDepthSlider_valueChanged(int value);
+    void on_hueLoSlider_valueChanged(int value);
+    void on_hueHiSlider_valueChanged(int value);
+    void on_satLoSlider_valueChanged(int value);
+    void on_satHiSlider_valueChanged(int value);
+    void on_valLoSlider_valueChanged(int value);
+    void on_valHiSlider_valueChanged(int value);
 };
 
 #endif // MAINWINDOW_H

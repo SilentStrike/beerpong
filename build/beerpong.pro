@@ -21,23 +21,20 @@ LIBS += -lopencv_imgproc
 LIBS += -lopencv_highgui
 LIBS += -lopencv_videoio
 LIBS += -lopencv_video
-
-release: DESTDIR = ..
-debug:   DESTDIR = ..
-
-OBJECTS_DIR = $$DESTDIR/.obj
-MOC_DIR = $$DESTDIR/.moc
-RCC_DIR = $$DESTDIR/.qrc
-UI_DIR = $$DESTDIR/.ui
+LIBS += -lfreenect
 
 SOURCES += ../src/main.cpp \
-../src/mainwindow.cpp \
+    ../src/mainwindow.cpp \
     ../src/controller.cpp \
-    ../src/player.cpp
+    ../src/player.cpp \
+    ../src/timer.cpp \
+    ../src/kinect.cpp
 
 HEADERS += ../include/mainwindow.h \
     ../include/controller.h \
-    ../include/player.h
+    ../include/player.h \
+    ../include/timer.h \
+    ../include/kinect.h
 
 FORMS += ../ui/mainwindow.ui
 

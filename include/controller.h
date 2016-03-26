@@ -2,13 +2,21 @@
 #define CONTROLLER_H
 
 #include <QThread>
-#include <QTimer>
+#include <QMainWindow>
+#include "timer.h"
 
 class Controller : public QThread
 {
     Q_OBJECT
 private:
-    QTimer t;
+    Timer timer;
+
+    // translation
+    float trans;
+
+    // speed
+    float trans_speed;
+    float launch_speed;
 
 signals:
     void ControllerFeedback(float trans, float speed);

@@ -22,8 +22,8 @@ LIBS += -lopencv_highgui
 LIBS += -lopencv_videoio
 LIBS += -lopencv_video
 
-release: DESTDIR = ../bin/release
-debug:   DESTDIR = ../bin/debug
+release: DESTDIR = ..
+debug:   DESTDIR = ..
 
 OBJECTS_DIR = $$DESTDIR/.obj
 MOC_DIR = $$DESTDIR/.moc
@@ -35,5 +35,6 @@ SOURCES += ../src/main.cpp \
 
 HEADERS += ../include/mainwindow.h
 
-FORMS += ../ui/robovision/mainwindow.ui
+FORMS += ../ui/mainwindow.ui
+
 

@@ -7,9 +7,15 @@
 
 #include "sublibinal.h"
 #include "chip_config.h"
+#include "softpwm.h"
 
-void timer_callback(void);
+void status_timer_callback(void);
 void packetizer_callback(uint8* data, uint8 size);
+
+typedef enum {
+    MOTOR_PWM
+    
+}PACKTIZER_CODES;
 
 
 int main(void) {
@@ -27,7 +33,14 @@ int main(void) {
     timer_config.which_timer = Timer_1;
     timer_config.pbclk = PB_CLK;
     timer_config.enabled = 1;
-    timer_config.callback = &timer_callback;
+    timer_config.callback = &status_timer_callback;
+    initialize_Timer(timer_config);
+    
+    timer_config.frequency = 10000;
+    timer_config.which_timer = Timer_2;
+    timer_config.pbclk = PB_CLK;
+    timer_config.enabled = 1;
+    timer_config.callback = &pwm_timer_callback;
     initialize_Timer(timer_config);
     
     
@@ -51,6 +64,9 @@ int main(void) {
     packetizer_config.which_channel = PACKET_UART_CH_1;
     initialize_packetizer(packetizer_config);
     
+    
+    pwm_setup();
+    
     //Global interrupt enable. Do this last!
     enable_Interrupts();
 
@@ -61,7 +77,7 @@ int main(void) {
     return 0;
 }
 
-void timer_callback(void)
+void status_timer_callback(void)
 {
     uint8 data[3];
 
@@ -74,4 +90,11 @@ void timer_callback(void)
 
 void packetizer_callback(uint8* data, uint8 size)
 {
+    switch(data[0])
+    {
+        case MOTOR_PWM:
+            pwm_duty_1 = data[1];
+            break;
+            
+    }
 }

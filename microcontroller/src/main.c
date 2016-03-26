@@ -8,12 +8,14 @@
 #include "sublibinal.h"
 #include "chip_config.h"
 #include "softpwm.h"
+#include "input_capture.h"
 
 void status_timer_callback(void);
 void packetizer_callback(uint8* data, uint8 size);
 
 typedef enum {
-    MOTOR_PWM
+    MOTOR_PWM,
+    IC1_VAL
     
 }PACKTIZER_CODES;
 
@@ -29,7 +31,7 @@ int main(void) {
     Packetizer_Config packetizer_config = {0};
     
     //timer setup
-    timer_config.frequency = 1;
+    timer_config.frequency = 10;
     timer_config.which_timer = Timer_1;
     timer_config.pbclk = PB_CLK;
     timer_config.enabled = 1;
@@ -66,6 +68,7 @@ int main(void) {
     
     
     pwm_setup();
+    setup_input_capture();
     
     //Global interrupt enable. Do this last!
     enable_Interrupts();
@@ -81,9 +84,9 @@ void status_timer_callback(void)
 {
     uint8 data[3];
 
-    data[0] = 'a';
-    data[1] = 'b';
-    data[2] = 'c';
+    data[0] = IC1_VAL;
+    data[1] = (ic1_val >> 8) & 0xFF;
+    data[2] = ic1_val & 0xFF;
 
     send_packet(PACKET_UART_CH_1, data, sizeof(data));
 }

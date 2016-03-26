@@ -45,17 +45,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=../src/main.c ../src/softpwm.c
+SOURCEFILES_QUOTED_IF_SPACED=../src/main.c ../src/softpwm.c ../src/input_capture.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1360937237/main.o ${OBJECTDIR}/_ext/1360937237/softpwm.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1360937237/main.o.d ${OBJECTDIR}/_ext/1360937237/softpwm.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1360937237/main.o ${OBJECTDIR}/_ext/1360937237/softpwm.o ${OBJECTDIR}/_ext/1360937237/input_capture.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1360937237/main.o.d ${OBJECTDIR}/_ext/1360937237/softpwm.o.d ${OBJECTDIR}/_ext/1360937237/input_capture.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/1360937237/main.o ${OBJECTDIR}/_ext/1360937237/softpwm.o
+OBJECTFILES=${OBJECTDIR}/_ext/1360937237/main.o ${OBJECTDIR}/_ext/1360937237/softpwm.o ${OBJECTDIR}/_ext/1360937237/input_capture.o
 
 # Source Files
-SOURCEFILES=../src/main.c ../src/softpwm.c
+SOURCEFILES=../src/main.c ../src/softpwm.c ../src/input_capture.c
 
 
 CFLAGS=
@@ -106,6 +106,12 @@ ${OBJECTDIR}/_ext/1360937237/softpwm.o: ../src/softpwm.c  nbproject/Makefile-${C
 	@${RM} ${OBJECTDIR}/_ext/1360937237/softpwm.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/softpwm.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"../include" -I"../SUBLIBinal/include" -MMD -MF "${OBJECTDIR}/_ext/1360937237/softpwm.o.d" -o ${OBJECTDIR}/_ext/1360937237/softpwm.o ../src/softpwm.c   
 	
+${OBJECTDIR}/_ext/1360937237/input_capture.o: ../src/input_capture.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
+	@${RM} ${OBJECTDIR}/_ext/1360937237/input_capture.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1360937237/input_capture.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/input_capture.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"../include" -I"../SUBLIBinal/include" -MMD -MF "${OBJECTDIR}/_ext/1360937237/input_capture.o.d" -o ${OBJECTDIR}/_ext/1360937237/input_capture.o ../src/input_capture.c   
+	
 else
 ${OBJECTDIR}/_ext/1360937237/main.o: ../src/main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
@@ -118,6 +124,12 @@ ${OBJECTDIR}/_ext/1360937237/softpwm.o: ../src/softpwm.c  nbproject/Makefile-${C
 	@${RM} ${OBJECTDIR}/_ext/1360937237/softpwm.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/softpwm.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/softpwm.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"../include" -I"../SUBLIBinal/include" -MMD -MF "${OBJECTDIR}/_ext/1360937237/softpwm.o.d" -o ${OBJECTDIR}/_ext/1360937237/softpwm.o ../src/softpwm.c   
+	
+${OBJECTDIR}/_ext/1360937237/input_capture.o: ../src/input_capture.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
+	@${RM} ${OBJECTDIR}/_ext/1360937237/input_capture.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1360937237/input_capture.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/input_capture.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"../include" -I"../SUBLIBinal/include" -MMD -MF "${OBJECTDIR}/_ext/1360937237/input_capture.o.d" -o ${OBJECTDIR}/_ext/1360937237/input_capture.o ../src/input_capture.c   
 	
 endif
 

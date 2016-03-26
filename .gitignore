@@ -44,3 +44,5 @@ bin/
 obj/
 lib/
 !build/beerpong.pro
+/microcontroller/proj/nbproject/private/
+/microcontroller/proj/dist/default/

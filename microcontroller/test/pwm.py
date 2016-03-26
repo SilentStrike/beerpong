@@ -10,10 +10,14 @@ def main():
 	while (1):
 		packet[1] = pwm
 		p.send_packet(packet)
-		time.sleep(1)
+		time.sleep(.05)
 		pwm += 1
 		if(pwm == 100):
 			break;
+
+	#stop the motor
+	packet[1] = 0
+	p.send_packet(packet)
 
 if __name__ == "__main__":
 	main()

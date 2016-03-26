@@ -32,8 +32,12 @@ UI_DIR = $$DESTDIR/.ui
 
 SOURCES += ../src/main.cpp \
 ../src/mainwindow.cpp \
+    ../src/controller.cpp \
+    ../src/player.cpp
 
-HEADERS += ../include/mainwindow.h
+HEADERS += ../include/mainwindow.h \
+    ../include/controller.h \
+    ../include/player.h
 
 FORMS += ../ui/mainwindow.ui
 

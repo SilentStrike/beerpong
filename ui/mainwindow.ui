@@ -87,6 +87,55 @@
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
+        <widget class="QFrame" name="pidFrame">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_6">
+          <item row="0" column="1" colspan="2">
+           <widget class="QLineEdit" name="pBox"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="iLabel">
+            <property name="text">
+             <string>I</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1" colspan="2">
+           <widget class="QLineEdit" name="iBox"/>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="dLabel">
+            <property name="text">
+             <string>D</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1" colspan="2">
+           <widget class="QLineEdit" name="dBox"/>
+          </item>
+          <item row="4" column="2">
+           <widget class="QPushButton" name="pidReset">
+            <property name="text">
+             <string>Reset</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="pLabel">
+            <property name="text">
+             <string>P</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
         <widget class="QFrame" name="speedFrame">
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
@@ -272,10 +321,10 @@
           <item row="0" column="1">
            <widget class="QSlider" name="minDepthSlider">
             <property name="minimum">
-             <number>50</number>
+             <number>600</number>
             </property>
             <property name="maximum">
-             <number>300</number>
+             <number>3000</number>
             </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
@@ -299,10 +348,13 @@
           <item row="1" column="1">
            <widget class="QSlider" name="maxDepthSlider">
             <property name="minimum">
-             <number>50</number>
+             <number>600</number>
             </property>
             <property name="maximum">
-             <number>300</number>
+             <number>3000</number>
+            </property>
+            <property name="value">
+             <number>3000</number>
             </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
@@ -340,6 +392,9 @@
             <property name="maximum">
              <number>179</number>
             </property>
+            <property name="value">
+             <number>20</number>
+            </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -363,6 +418,9 @@
            <widget class="QSlider" name="hueHiSlider">
             <property name="maximum">
              <number>179</number>
+            </property>
+            <property name="value">
+             <number>150</number>
             </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
@@ -388,6 +446,9 @@
             <property name="maximum">
              <number>255</number>
             </property>
+            <property name="value">
+             <number>100</number>
+            </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -410,6 +471,9 @@
           <item row="1" column="4">
            <widget class="QSlider" name="satHiSlider">
             <property name="maximum">
+             <number>255</number>
+            </property>
+            <property name="value">
              <number>255</number>
             </property>
             <property name="orientation">
@@ -436,6 +500,9 @@
             <property name="maximum">
              <number>255</number>
             </property>
+            <property name="value">
+             <number>100</number>
+            </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -458,6 +525,9 @@
           <item row="2" column="4">
            <widget class="QSlider" name="valHiSlider">
             <property name="maximum">
+             <number>255</number>
+            </property>
+            <property name="value">
              <number>255</number>
             </property>
             <property name="orientation">

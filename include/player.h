@@ -3,6 +3,7 @@
 
 #include <sys/time.h>
 #include <iostream>
+#include <QDebug>
 #include <QThread>
 #include <QImage>
 #include <opencv2/core.hpp>
@@ -31,14 +32,18 @@ private:
 
     // video
     float framerate;
-    Mat dist_frame;
-    Mat depth_frame;
-    Mat video_frame;
     Timer timer;
 
     // kinect
     Freenect::Freenect *freenect;
     Kinect *kinect;
+
+    // frames
+    Mat depthMat;
+    Mat depthF;
+    Mat depthD;
+    Mat rgbMat;
+    Mat ownMat;
 
 signals:
     void ProcessedVideo(const QImage image);

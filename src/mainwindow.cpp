@@ -13,9 +13,32 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(controller, SIGNAL(ControllerFeedback(float, float)), this, SLOT(UpdateFeedback(float, float)));
 
     // create player
-    //player = new Player();
-    //QObject::connect(player, SIGNAL(ProcessedVideo(QImage)), this, SLOT(UpdateVideo(QImage)));
-    //QObject::connect(player, SIGNAL(ProcessedDepth(QImage)), this, SLOT(UpdateDepth(QImage)));
+    player = new Player();
+    QObject::connect(player, SIGNAL(ProcessedVideo(QImage)), this, SLOT(UpdateVideo(QImage)));
+    QObject::connect(player, SIGNAL(ProcessedDepth(QImage)), this, SLOT(UpdateDepth(QImage)));
+
+    // initialize values
+    // depth
+    player->SetMinDepth(ui->minDepthSlider->value());
+    ui->minDepthValue->setText(QString::number(ui->minDepthSlider->value()));
+    player->SetMaxDepth(ui->maxDepthSlider->value());
+    ui->maxDepthValue->setText(QString::number(ui->maxDepthSlider->value()));
+
+    // hsv
+    player->SetHLo(ui->hueLoSlider->value());
+    ui->hueLoValue->setText(QString::number(ui->hueLoSlider->value()));
+    player->SetHHi(ui->hueHiSlider->value());
+    ui->hueHiValue->setText(QString::number(ui->hueHiSlider->value()));
+
+    player->SetSLo(ui->satLoSlider->value());
+    ui->satLoValue->setText(QString::number(ui->satLoSlider->value()));
+    player->SetSHi(ui->satHiSlider->value());
+    ui->satHiValue->setText(QString::number(ui->satHiSlider->value()));
+
+    player->SetVLo(ui->valLoSlider->value());
+    ui->valLoValue->setText(QString::number(ui->valLoSlider->value()));
+    player->SetVHi(ui->valHiSlider->value());
+    ui->valHiValue->setText(QString::number(ui->HiSlider->value()));
 }
 
 MainWindow::~MainWindow()

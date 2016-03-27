@@ -20,7 +20,6 @@ int main(int argc, char *argv[])
     MainWindow *w = new MainWindow();
     w->setAttribute(Qt::WA_QuitOnClose, true);
     w->setWindowIcon(QIcon("resources/icon.png"));
-    w->setWindowState(Qt::WindowMaximized);
     w->show();
 
     return a.exec();

@@ -38,7 +38,7 @@ MainWindow::MainWindow(QWidget *parent) :
     player->SetVLo(ui->valLoSlider->value());
     ui->valLoValue->setText(QString::number(ui->valLoSlider->value()));
     player->SetVHi(ui->valHiSlider->value());
-    ui->valHiValue->setText(QString::number(ui->HiSlider->value()));
+    ui->valHiValue->setText(QString::number(ui->valHiSlider->value()));
 }
 
 MainWindow::~MainWindow()

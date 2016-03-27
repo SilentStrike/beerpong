@@ -48,6 +48,7 @@ void Player::run()
         emit ProcessedDepth(MattoQImage(depthF));
 
         // threshold color
+        medianBlur(rgbMat,rgbMat,5);
         Mat rgbMatMinRange(Size(640,480),CV_8UC3,Scalar(0));
         Mat rgbMatMinDepthHSV(Size(640,480),CV_8UC3,Scalar(0));
         Mat rgbMatMinDepthHSV2(Size(640,480),CV_8UC3,Scalar(0));

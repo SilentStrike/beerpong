@@ -85,8 +85,8 @@
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <layout class="QGridLayout" name="gridLayout_8">
-       <item row="0" column="0" rowspan="2">
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
         <widget class="QFrame" name="pidFrame">
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
@@ -105,7 +105,7 @@
           <item row="0" column="1" colspan="2">
            <widget class="QLineEdit" name="pBox">
             <property name="text">
-             <string>10</string>
+             <string>15</string>
             </property>
            </widget>
           </item>
@@ -133,14 +133,14 @@
           <item row="2" column="1" colspan="2">
            <widget class="QLineEdit" name="dBox">
             <property name="text">
-             <string>10</string>
+             <string>25</string>
             </property>
            </widget>
           </item>
           <item row="3" column="0" colspan="2">
            <widget class="QLabel" name="label">
             <property name="text">
-             <string>Max I</string>
+             <string>M</string>
             </property>
            </widget>
           </item>
@@ -154,7 +154,7 @@
          </layout>
         </widget>
        </item>
-       <item row="0" column="1" rowspan="2">
+       <item>
         <widget class="QFrame" name="speedFrame">
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
@@ -166,7 +166,7 @@
           <item row="0" column="0">
            <widget class="QLabel" name="desiredTransLabel">
             <property name="text">
-             <string>Desired Trans</string>
+             <string>Trans D</string>
             </property>
            </widget>
           </item>
@@ -180,7 +180,7 @@
           <item row="1" column="0">
            <widget class="QLabel" name="actualTransLabel">
             <property name="text">
-             <string>Actual Trans</string>
+             <string>Trans A</string>
             </property>
            </widget>
           </item>
@@ -194,14 +194,14 @@
           <item row="2" column="0">
            <widget class="QLabel" name="desiredLaunchLabel">
             <property name="text">
-             <string>Desired Launch</string>
+             <string>Launch D</string>
             </property>
            </widget>
           </item>
           <item row="3" column="0">
            <widget class="QLabel" name="actualLaunchLabel">
             <property name="text">
-             <string>Actual Launch</string>
+             <string>Launch A</string>
             </property>
            </widget>
           </item>
@@ -219,57 +219,10 @@
             </property>
            </widget>
           </item>
-          <item row="4" column="0">
-           <widget class="QPushButton" name="pidReset">
-            <property name="text">
-             <string>Reset</string>
-            </property>
-           </widget>
-          </item>
          </layout>
         </widget>
        </item>
-       <item row="0" column="2">
-        <widget class="QFrame" name="buttonFrame">
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <layout class="QGridLayout" name="gridLayout_5">
-          <item row="0" column="0">
-           <widget class="QPushButton" name="startButton">
-            <property name="text">
-             <string>Start</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QRadioButton" name="manualButton">
-            <property name="text">
-             <string>Manual</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QPushButton" name="resetButton">
-            <property name="text">
-             <string>Reset</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QRadioButton" name="autoButton">
-            <property name="text">
-             <string>Auto</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item row="1" column="2">
+       <item>
         <widget class="QFrame" name="launchFrame">
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
@@ -298,58 +251,14 @@
           <item row="1" column="1">
            <widget class="QLineEdit" name="speedBox"/>
           </item>
+          <item row="2" column="1">
+           <widget class="QPushButton" name="pidReset">
+            <property name="text">
+             <string>Reset</string>
+            </property>
+           </widget>
+          </item>
          </layout>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item row="2" column="0" colspan="2">
-     <widget class="QFrame" name="translationFrame">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>50</height>
-       </size>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_2">
-       <item>
-        <widget class="QLabel" name="translationLabel">
-         <property name="text">
-          <string>Translation</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QSlider" name="translationSlider">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="translationValue">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
         </widget>
        </item>
       </layout>

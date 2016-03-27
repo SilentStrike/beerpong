@@ -16,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
     player = new Player();
     QObject::connect(player, SIGNAL(ProcessedVideo(QImage)), this, SLOT(UpdateVideo(QImage)));
     QObject::connect(player, SIGNAL(ProcessedDepth(QImage)), this, SLOT(UpdateDepth(QImage)));
+    QObject::connect(player, SIGNAL(ProcessedDist(float, float)), this, SLOT(UpdateDist(float, float)));
 
     // initialize values
     // depth
@@ -85,6 +86,12 @@ void MainWindow::UpdateDepth(const QImage image)
             l->setPixmap(QPixmap::fromImage(image).scaled(l->size(), Qt::KeepAspectRatio, Qt::FastTransformation));
         }
     }
+}
+
+void MainWindow::UpdateDist(float dist, float speed)
+{
+    ui->distanceBox->setText(QString::number(dist));
+    ui->speedBox->setText(QString::number(speed));
 }
 
 void MainWindow::on_minDepthSlider_valueChanged(int value)

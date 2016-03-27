@@ -48,8 +48,8 @@ void Controller::run()
 
         if(pwm_value > 100)
             pwm_value = 100;
-        else if(pwm_value < 40)
-            pwm_value = 40;
+        else if(pwm_value < 20)
+            pwm_value = 20;
 
         if(pid.get_goal() == 0)
             pwm_value = 0;

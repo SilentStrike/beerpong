@@ -37,6 +37,7 @@ private slots:
     void UpdateFeedback(double trans, double speed);
     void UpdateVideo(const QImage image);
     void UpdateDepth(const QImage image);
+    void UpdateDist(float dist, float speed);
     void on_minDepthSlider_valueChanged(int value);
     void on_maxDepthSlider_valueChanged(int value);
     void on_hueLoSlider_valueChanged(int value);

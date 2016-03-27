@@ -15,7 +15,7 @@
 using namespace cv;
 using namespace std;
 
-#define GRAVITY 9.81
+#define GRAVITY -9.81
 
 class Player : public QThread
 {
@@ -65,6 +65,7 @@ private:
 signals:
     void ProcessedVideo(const QImage image);
     void ProcessedDepth(const QImage image);
+    void ProcessedDist(float dist, float speed);
 
 protected:
     void run();

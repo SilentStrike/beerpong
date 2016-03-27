@@ -10,6 +10,10 @@ Player::Player(QObject *parent) : QThread (parent)
     ownMat = Mat(Size(640,480),CV_8UC3,Scalar(0));
     minarea = 100;
 
+    x = 0;
+    y = 0;
+    theta = 50;
+
     // setup kinect
     freenect = new Freenect::Freenect();
     Kinect &k = freenect->createDevice<Kinect>(0);
@@ -101,7 +105,14 @@ void Player::run()
         distance = depthMat.at<uint16_t>(centroid.y, centroid.x);
 
         // calc launch speed
-        speed = CalcSpeed(x, y, theta);
+        if(distance > 0)
+        {
+            x = distance + 50; // right in front of launcher
+            speed = CalcSpeed(x / 1000, y / 1000, theta);
+            emit ProcessedDist(distance, speed);
+        } else {
+            emit ProcessedDist(0, 0);
+        }
 
         // update time
         msleep(((1000 / framerate) - timer.GetElapsedTime()) > 0 ? (1000 / framerate) - timer.GetElapsedTime() : 0);

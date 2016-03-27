@@ -21,7 +21,7 @@ private:
     float trans_speed;
     float launch_speed;
 
-	PID pid;
+
 	Packetizer *packetizer;
 	double rpm_factor;
 
@@ -33,6 +33,7 @@ protected:
 
 public:
     Controller(QObject *parent = 0);
+    PID pid;
     ~Controller();
 };
 

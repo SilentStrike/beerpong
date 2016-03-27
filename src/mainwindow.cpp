@@ -125,4 +125,25 @@ void MainWindow::on_valHiSlider_valueChanged(int value)
 
 void MainWindow::on_pBox_returnPressed()
 {
+    controller->pid.setP(ui->pBox->text().toDouble());
+}
+
+void MainWindow::on_iBox_returnPressed()
+{
+    controller->pid.setI(ui->iBox->text().toDouble());
+}
+
+void MainWindow::on_dBox_returnPressed()
+{
+    controller->pid.setD(ui->dBox->text().toDouble());
+}
+
+void MainWindow::on_pidReset_clicked()
+{
+    controller->pid.reset();
+}
+
+void MainWindow::on_desiredLaunchBox_returnPressed()
+{
+    controller->pid.set_goal(ui->desiredLaunchBox->text().toDouble());
 }

@@ -23,6 +23,8 @@ void Controller::run()
 	current_rpm = (buf[1] << 8 | buf[2]);
 	current_rpm = current_rpm * rpm_factor;
 
+    emit ControllerFeedback(0, current_rpm);
+
 	//update parameters
     //pid.set_goal(current_goal);
 

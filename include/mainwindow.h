@@ -42,6 +42,12 @@ private slots:
     void on_satHiSlider_valueChanged(int value);
     void on_valLoSlider_valueChanged(int value);
     void on_valHiSlider_valueChanged(int value);
+    void on_pBox_returnPressed();
+    void on_iBox_returnPressed();
+    void on_dBox_returnPressed();
+    void on_pidReset_clicked();
+    void on_desiredLaunchBox_returnPressed();
+
 };
 
 #endif // MAINWINDOW_H

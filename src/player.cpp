@@ -25,34 +25,11 @@ Player::~Player()
     kinect->stopDepth();
 }
 
-std::pair<bool,Point> FindCenterLargestCentroid(Mat image, float minarea)
+float Player::CalcSpeed(float x, float y, float theta)
 {
-    int largest_area = 0;
-    int largest_contour_index = 0;
-    vector<vector<Point> > contours;
-    vector<Vec4i> hierarchy;
-
-    // find largest contour
-    double a = 0;
-    findContours(image, contours, hierarchy, CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE);
-    for (int i = 0; i < contours.size(); i++)
-    {
-        a = contourArea(contours[i]);
-        if (a > largest_area)
-        {
-            largest_area = a;
-            largest_contour_index = i;
-        }
-        drawContours(image, contours, i, Scalar(255,255,255,0), CV_FILLED, 8, hierarchy);
-    }
-
-    // return moment
-    if (a > minarea)
-    {
-        Moments moment = moments(contours[largest_contour_index], true);
-        return std::pair<bool,Point>(true, Point(moment.m10 / moment.m00, moment.m01 / moment.m00));
-    }
-    return std::pair<bool, Point>(false, Point());
+    float top = pow(x,2) * GRAVITY;
+    float bot = x * sin(2 * theta) - 2 * y * pow(cos(theta),2);
+    return sqrt(top / bot);
 }
 
 void Player::run()
@@ -119,6 +96,12 @@ void Player::run()
         }
 
         emit ProcessedVideo(MattoBGRQImage(rgbMatMinRange));
+
+        // calculate cup distance
+        distance = depthMat.at<uint16_t>(centroid.y, centroid.x);
+
+        // calc launch speed
+        speed = CalcSpeed(x, y, theta);
 
         // update time
         msleep(((1000 / framerate) - timer.GetElapsedTime()) > 0 ? (1000 / framerate) - timer.GetElapsedTime() : 0);

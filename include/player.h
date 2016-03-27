@@ -2,6 +2,7 @@
 #define PLAYER_H
 
 #include <sys/time.h>
+#include <cmath>
 #include <iostream>
 #include <QDebug>
 #include <QThread>
@@ -13,6 +14,8 @@
 
 using namespace cv;
 using namespace std;
+
+#define GRAVITY 9.81
 
 class Player : public QThread
 {
@@ -34,6 +37,13 @@ private:
     Point centroid;
     float minarea;
 
+    // distance and launch
+    float x;
+    float y;
+    float theta;
+    float distance;
+    float speed;
+
     // video
     float framerate;
     Timer timer;
@@ -48,6 +58,9 @@ private:
     Mat depthD;
     Mat rgbMat;
     Mat ownMat;
+
+    // in METERS!
+    float CalcSpeed(float x, float y, float theta);
 
 signals:
     void ProcessedVideo(const QImage image);

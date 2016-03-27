@@ -85,8 +85,8 @@
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_3">
-       <item>
+      <layout class="QGridLayout" name="gridLayout_8">
+       <item row="0" column="0" rowspan="2">
         <widget class="QFrame" name="pidFrame">
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
@@ -147,7 +147,7 @@
          </layout>
         </widget>
        </item>
-       <item>
+       <item row="0" column="1" rowspan="2">
         <widget class="QFrame" name="speedFrame">
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
@@ -215,7 +215,7 @@
          </layout>
         </widget>
        </item>
-       <item>
+       <item row="0" column="2">
         <widget class="QFrame" name="buttonFrame">
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
@@ -251,6 +251,38 @@
              <string>Auto</string>
             </property>
            </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QFrame" name="launchFrame">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_7">
+          <item row="0" column="0">
+           <widget class="QLabel" name="distLabel">
+            <property name="text">
+             <string>Distance</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="distanceBox"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="speedLabel">
+            <property name="text">
+             <string>Speed</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="speedBox"/>
           </item>
          </layout>
         </widget>

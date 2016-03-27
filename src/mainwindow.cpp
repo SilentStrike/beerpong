@@ -187,4 +187,6 @@ void MainWindow::on_autoButton_clicked()
 void MainWindow::on_manualButton_clicked()
 {
     m_auto = false;
+    controller->pid.set_goal(0); // reset
+    ui->desiredLaunchBox->setText(QString::number(0));
 }

@@ -19,7 +19,8 @@ void pwm_timer_callback(void)
     if(counter >= 100)
     {
         counter = 0;
-        LATBbits.LATB7 = 1;
+        if(pwm_duty_1 != 0)
+            LATBbits.LATB7 = 1;
         
     }
     else

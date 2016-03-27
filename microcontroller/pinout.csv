@@ -1,6 +1,6 @@
 Pin,Microcontroller,Function
 0,B5,
-1,B7,
+1,B7,pwm1
 2,B8,
 3,B9,
 4,B10,
@@ -17,4 +17,4 @@ Pin,Microcontroller,Function
 15,A2,
 16,A3,
 17,B4,
-18,A4,
+18,A4,IC1

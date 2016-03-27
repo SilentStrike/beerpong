@@ -18,6 +18,8 @@ void setup_input_capture(void)
     
     //timer3 setup
     T3CONbits.TCKPS = 0b111; //prescaler bits
+    IPC3bits.T3IP = 7;
+    IEC0bits.T3IE = 1;
     T3CONbits.ON = 1;    
     
     IC1CONbits.C32 = 0; //16-bit timer
@@ -37,5 +39,15 @@ void __ISR(_INPUT_CAPTURE_1_VECTOR, IPL7AUTO) Input_Capture_1_Handler(void) {
 
     IFS0bits.IC1IF = 0; //clear the interrupt flag
 
+    asm volatile ("ei"); //reenable interrupts
+}
+
+void __ISR(_TIMER_3_VECTOR, IPL7AUTO) better_handler_3(void) {
+    asm volatile ("di"); //disable interrupts
+
+    ic1_val = 0;
+   
+
+    IFS0bits.T3IF = 0; //clear the interrupt flag
     asm volatile ("ei"); //reenable interrupts
 }

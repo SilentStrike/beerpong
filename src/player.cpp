@@ -8,6 +8,7 @@ Player::Player(QObject *parent) : QThread (parent)
     depthD = Mat(Size(640,480),CV_32FC1,Scalar(0));
     rgbMat = Mat(Size(640,480),CV_8UC3,Scalar(0));
     ownMat = Mat(Size(640,480),CV_8UC3,Scalar(0));
+    minarea = 100;
 
     // setup kinect
     freenect = new Freenect::Freenect();
@@ -22,6 +23,36 @@ Player::~Player()
 {
     kinect->stopVideo();
     kinect->stopDepth();
+}
+
+std::pair<bool,Point> FindCenterLargestCentroid(Mat image, float minarea)
+{
+    int largest_area = 0;
+    int largest_contour_index = 0;
+    vector<vector<Point> > contours;
+    vector<Vec4i> hierarchy;
+
+    // find largest contour
+    double a = 0;
+    findContours(image, contours, hierarchy, CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE);
+    for (int i = 0; i < contours.size(); i++)
+    {
+        a = contourArea(contours[i]);
+        if (a > largest_area)
+        {
+            largest_area = a;
+            largest_contour_index = i;
+        }
+        drawContours(image, contours, i, Scalar(255,255,255,0), CV_FILLED, 8, hierarchy);
+    }
+
+    // return moment
+    if (a > minarea)
+    {
+        Moments moment = moments(contours[largest_contour_index], true);
+        return std::pair<bool,Point>(true, Point(moment.m10 / moment.m00, moment.m01 / moment.m00));
+    }
+    return std::pair<bool, Point>(false, Point());
 }
 
 void Player::run()
@@ -60,6 +91,33 @@ void Player::run()
         erode(binImage, binImage, getStructuringElement(MORPH_RECT, Size(3, 3)));
         dilate(binImage, binImage, getStructuringElement(MORPH_RECT, Size(3, 3)));
         rgbMatMinDepth.copyTo(rgbMatMinRange, binImage);
+
+        // find centroid and overlay
+        int largest_area = 0;
+        int largest_contour_index = 0;
+        vector<vector<Point> > contours;
+        vector<Vec4i> hierarchy;
+
+        // find largest contour and overlay
+        double a = 0;
+        findContours(binImage, contours, hierarchy, CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE);
+        for (int i = 0; i < contours.size(); i++)
+        {
+            a = contourArea(contours[i]);
+            if (a > largest_area)
+            {
+                largest_area = a;
+                largest_contour_index = i;
+            }
+            drawContours(binImage, contours, i, Scalar(255,255,255,0), CV_FILLED, 8, hierarchy);
+        }
+        if (a > minarea)
+        {
+            Moments moment = moments(contours[largest_contour_index], true);
+            centroid = Point(moment.m10 / moment.m00, moment.m01 / moment.m00);
+            circle(rgbMatMinRange, centroid, 5, Scalar(0, 255, 0), -1, 8, 0);
+        }
+
         emit ProcessedVideo(MattoBGRQImage(rgbMatMinRange));
 
         // update time

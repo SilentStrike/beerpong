@@ -30,6 +30,10 @@ private:
     int v_lo;
     int v_hi;
 
+    // centroid
+    Point centroid;
+    float minarea;
+
     // video
     float framerate;
     Timer timer;

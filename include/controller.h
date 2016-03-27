@@ -1,6 +1,7 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
+#include <QDebug>
 #include <QThread>
 #include <QMainWindow>
 #include "timer.h"

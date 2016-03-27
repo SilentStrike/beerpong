@@ -4,7 +4,6 @@ Controller::Controller(QObject *parent) : QThread (parent)
 {
 	packetizer = new Packetizer("/dev/ttyUSB0", 0x0A);
 	rpm_factor = 256.0/15000000.0/16.0;
-	rpm_factor = 1.0/rpm_factor;
     emit ControllerFeedback(0, 0);
 
     start();
@@ -27,7 +26,7 @@ void Controller::run()
         //get rpm from microcontroller
         size = packetizer->get(buf);
         current_rpm = (buf[1] << 8 | buf[2]);
-        current_rpm = current_rpm * rpm_factor;
+        current_rpm = 1.0/ (current_rpm * rpm_factor);
 
         emit ControllerFeedback(0, current_rpm);
 

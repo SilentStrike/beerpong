@@ -28,7 +28,9 @@ SOURCES += ../src/main.cpp \
     ../src/controller.cpp \
     ../src/player.cpp \
     ../src/timer.cpp \
-    ../src/kinect.cpp
+    ../src/kinect.cpp \
+    ../src/Packetizer.cpp \
+    ../src/Serial.cpp
 
 HEADERS += ../include/mainwindow.h \
     ../include/controller.h \

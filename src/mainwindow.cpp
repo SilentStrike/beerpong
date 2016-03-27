@@ -122,3 +122,7 @@ void MainWindow::on_valHiSlider_valueChanged(int value)
     player->SetVHi(value);
     ui->valHiValue->setText(QString::number(value));
 }
+
+void MainWindow::on_pBox_returnPressed()
+{
+}

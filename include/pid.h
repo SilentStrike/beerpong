@@ -10,7 +10,7 @@ class PID
 			kI = 0;
 			kD = 0;
 
-			max_integral = 0;
+			max_integral = 100;
 
 			goal = 0;
 			error_integral = 0;
@@ -19,12 +19,23 @@ class PID
 
 		~PID(void) {}
 
-		void set_parameters(double _kP, double _kI, double _kD, double _max_integral)
+		void setP(double _kP)
 		{
 			kP = _kP;
-			kI = _kI;
-			kD = _kD;
+		}
 
+		void setI(double _kI)
+		{
+			kI = _kI;
+		}
+
+		void setD(double _kD)
+		{
+			kD = _kD;
+		}
+
+		void setmaxI(double _max_integral)
+		{
 			max_integral = _max_integral;
 		}
 

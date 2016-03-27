@@ -24,8 +24,7 @@ void Controller::run()
 	current_rpm = current_rpm * rpm_factor;
 
 	//update parameters
-	pid.set_parameters(P,I,D, 100);
-	pid.set_goal(current_goal);
+    //pid.set_goal(current_goal);
 
 	double pwm_value = pid.update(current_rpm);
 

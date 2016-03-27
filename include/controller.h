@@ -5,6 +5,9 @@
 #include <QMainWindow>
 #include "timer.h"
 
+#include "pid.h"
+#include "Packetizer.hpp"
+
 class Controller : public QThread
 {
     Q_OBJECT
@@ -17,6 +20,10 @@ private:
     // speed
     float trans_speed;
     float launch_speed;
+
+	PID pid;
+	Packetizer *packetizer;
+	double rpm_factor;
 
 signals:
     void ControllerFeedback(float trans, float speed);

@@ -4,11 +4,16 @@
 #include <QThread>
 #include <QTimer>
 
+#include "pid.h"
+
 class Controller : public QThread
 {
     Q_OBJECT
 private:
     QTimer t;
+	PID pid;
+	Packetizer *packetizer;
+	double rpm_factor;
 
 signals:
     void ControllerFeedback(float trans, float speed);

@@ -39,11 +39,22 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->valLoValue->setText(QString::number(ui->valLoSlider->value()));
     player->SetVHi(ui->valHiSlider->value());
     ui->valHiValue->setText(QString::number(ui->valHiSlider->value()));
+
+    // pid
+    controller->pid.setP(ui->pBox->text().toDouble());
+    controller->pid.setI(ui->iBox->text().toDouble());
+    controller->pid.setD(ui->dBox->text().toDouble());
+    controller->pid.setmaxI(ui->maxiBox->text().toDouble());
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::exit()
+{
+    qApp->quit();
 }
 
 void MainWindow::UpdateFeedback(double trans, double speed)
@@ -149,4 +160,15 @@ void MainWindow::on_pidReset_clicked()
 void MainWindow::on_desiredLaunchBox_returnPressed()
 {
     controller->pid.set_goal(ui->desiredLaunchBox->text().toDouble());
+}
+
+void MainWindow::on_maxiBox_returnPressed()
+{
+    controller->pid.setmaxI(ui->maxiBox->text().toDouble());
+}
+
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    qDebug() << "close";
+    this->exit();
 }

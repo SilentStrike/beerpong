@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <QDebug>
 #include <QMainWindow>
 #include "controller.h"
 #include "player.h"
@@ -24,6 +25,8 @@ public:
     ~MainWindow();
 
 private:
+    void exit();
+
     Ui::MainWindow *ui;
 
     // threads
@@ -47,7 +50,8 @@ private slots:
     void on_dBox_returnPressed();
     void on_pidReset_clicked();
     void on_desiredLaunchBox_returnPressed();
-
+    void on_maxiBox_returnPressed();
+    void closeEvent(QCloseEvent *event);
 };
 
 #endif // MAINWINDOW_H

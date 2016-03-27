@@ -1,6 +1,8 @@
 #ifndef PID_H
 #define PID_H
 
+#include <QDebug>
+
 class PID
 {
 	public:
@@ -10,7 +12,7 @@ class PID
 			kI = 0;
 			kD = 0;
 
-			max_integral = 100;
+            max_integral = 0;
 
 			goal = 0;
 			error_integral = 0;
@@ -50,12 +52,21 @@ class PID
 		{
 			double p, i, d;
 			double error;
+            double output;
 
-			error = current_value - goal;
-			
+            error =  goal - current_value;
+
 			p = kP * error;
 
 			error_integral += error;
+
+            if(error_integral > max_integral)
+                error_integral = max_integral;
+
+            if(error_integral < 0)
+                error_integral = 0;
+
+
 			i = kI * error_integral;
 
 			double derivative_error = error - prev_error;
@@ -63,14 +74,26 @@ class PID
 
 			d = kD * derivative_error;
 
-			return p + i + d;
+
+
+            output = p + i + d;
+
+            //qDebug() << "goal: " << goal << "error: " << error << "output: " << output;
+
+            return output;
 		}
 
 		void set_goal(double new_goal)
 		{
 			goal = new_goal;
 		}
-	
+
+
+		double get_goal(void)
+		{
+			return goal;
+		}
+
 	private:
 		double kP;
 		double kI;

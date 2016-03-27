@@ -95,52 +95,59 @@
           <enum>QFrame::Raised</enum>
          </property>
          <layout class="QGridLayout" name="gridLayout_6">
-          <item row="0" column="1" colspan="2">
-           <widget class="QLineEdit" name="pBox">
+          <item row="0" column="0">
+           <widget class="QLabel" name="pLabel">
             <property name="text">
-             <string>0</string>
+             <string>P</string>
             </property>
            </widget>
           </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="iLabel">
+          <item row="0" column="1" colspan="2">
+           <widget class="QLineEdit" name="pBox">
+            <property name="text">
+             <string>10</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="maxiLabel">
             <property name="text">
              <string>I</string>
             </property>
            </widget>
           </item>
-          <item row="2" column="1" colspan="2">
+          <item row="1" column="1" colspan="2">
            <widget class="QLineEdit" name="iBox">
             <property name="text">
-             <string>0</string>
+             <string>1</string>
             </property>
            </widget>
           </item>
-          <item row="3" column="0">
+          <item row="2" column="0">
            <widget class="QLabel" name="dLabel">
             <property name="text">
              <string>D</string>
             </property>
            </widget>
           </item>
-          <item row="3" column="1" colspan="2">
+          <item row="2" column="1" colspan="2">
            <widget class="QLineEdit" name="dBox">
             <property name="text">
-             <string>0</string>
+             <string>10</string>
             </property>
            </widget>
           </item>
-          <item row="4" column="2">
-           <widget class="QPushButton" name="pidReset">
+          <item row="3" column="0" colspan="2">
+           <widget class="QLabel" name="label">
             <property name="text">
-             <string>Reset</string>
+             <string>Max I</string>
             </property>
            </widget>
           </item>
-          <item row="0" column="0">
-           <widget class="QLabel" name="pLabel">
+          <item row="3" column="2">
+           <widget class="QLineEdit" name="maxiBox">
             <property name="text">
-             <string>P</string>
+             <string>100</string>
             </property>
            </widget>
           </item>
@@ -191,13 +198,6 @@
             </property>
            </widget>
           </item>
-          <item row="2" column="1">
-           <widget class="QLineEdit" name="desiredLaunchBox">
-            <property name="text">
-             <string>0</string>
-            </property>
-           </widget>
-          </item>
           <item row="3" column="0">
            <widget class="QLabel" name="actualLaunchLabel">
             <property name="text">
@@ -205,10 +205,24 @@
             </property>
            </widget>
           </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="desiredLaunchBox">
+            <property name="text">
+             <string>0</string>
+            </property>
+           </widget>
+          </item>
           <item row="3" column="1">
            <widget class="QLineEdit" name="actualLaunchBox">
             <property name="text">
              <string>0</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QPushButton" name="pidReset">
+            <property name="text">
+             <string>Reset</string>
             </property>
            </widget>
           </item>
@@ -453,7 +467,7 @@
              <number>179</number>
             </property>
             <property name="value">
-             <number>20</number>
+             <number>10</number>
             </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>

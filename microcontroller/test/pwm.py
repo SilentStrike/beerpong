@@ -3,7 +3,7 @@ from packetizer import Packetizer
 import time
 
 def main():
-	p = Packetizer('/dev/ttyUSB0')
+	p = Packetizer('/dev/rfcomm0')
 	packetizer_code = 0	
 	pwm = 0
 	packet = [packetizer_code , pwm]

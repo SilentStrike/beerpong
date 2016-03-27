@@ -31,7 +31,7 @@ private:
     Player *player;
 
 private slots:
-    void UpdateFeedback(float trans, float speed);
+    void UpdateFeedback(double trans, double speed);
     void UpdateVideo(const QImage image);
     void UpdateDepth(const QImage image);
     void on_minDepthSlider_valueChanged(int value);

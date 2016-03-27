@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // create controller
     controller = new Controller();
-    QObject::connect(controller, SIGNAL(ControllerFeedback(float, float)), this, SLOT(UpdateFeedback(float, float)));
+    QObject::connect(controller, SIGNAL(ControllerFeedback(double, double)), this, SLOT(UpdateFeedback(double, double)));
 
     // create player
     player = new Player();
@@ -46,9 +46,10 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::UpdateFeedback(float trans, float speed)
+void MainWindow::UpdateFeedback(double trans, double speed)
 {
-
+    ui->actualLaunchBox->setText(QString::number(speed));
+    ui->actualTransBox->setText(QString::number(trans));
 }
 
 void MainWindow::UpdateVideo(const QImage image)
@@ -141,6 +142,8 @@ void MainWindow::on_dBox_returnPressed()
 void MainWindow::on_pidReset_clicked()
 {
     controller->pid.reset();
+    ui->desiredTransBox->setText("0");
+    ui->desiredLaunchBox->setText("0");
 }
 
 void MainWindow::on_desiredLaunchBox_returnPressed()

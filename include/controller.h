@@ -26,7 +26,7 @@ private:
 	double rpm_factor;
 
 signals:
-    void ControllerFeedback(float trans, float speed);
+    void ControllerFeedback(double trans, double speed);
 
 protected:
     void run();

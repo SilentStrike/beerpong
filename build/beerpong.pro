@@ -36,7 +36,8 @@ HEADERS += ../include/mainwindow.h \
     ../include/controller.h \
     ../include/player.h \
     ../include/timer.h \
-    ../include/kinect.h
+    ../include/kinect.h \
+    ../include/pid.h
 
 FORMS += ../ui/mainwindow.ui
 

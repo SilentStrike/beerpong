@@ -13,7 +13,7 @@ class PID
 			max_integral = 0;
 
 			goal = 0;
-			integral = 0;
+			error_integral = 0;
 			prev_error = 0;
 		}
 
@@ -31,7 +31,7 @@ class PID
 		void reset(void)
 		{
 			goal = 0;
-			integral = 0;
+			error_integral = 0;
 			prev_error = 0;
 		}
 
@@ -69,7 +69,7 @@ class PID
 
 		double goal;
 
-		double integral;
+		double error_integral;
 		double prev_error;
 };
 

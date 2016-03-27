@@ -5,6 +5,7 @@
 #include <QTimer>
 
 #include "pid.h"
+#include "Packetizer.hpp"
 
 class Controller : public QThread
 {

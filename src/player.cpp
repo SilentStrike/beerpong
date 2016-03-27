@@ -107,7 +107,7 @@ void Player::run()
         // calc launch speed
         if(distance > 0)
         {
-            x = distance + 50; // right in front of launcher
+            x = distance + 150; // right in front of launcher
             speed = CalcSpeed(x / 1000, y / 1000, theta);
             emit ProcessedDist(distance, speed);
         } else {

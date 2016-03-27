@@ -46,16 +46,14 @@ MainWindow::MainWindow(QWidget *parent) :
     controller->pid.setI(ui->iBox->text().toDouble());
     controller->pid.setD(ui->dBox->text().toDouble());
     controller->pid.setmaxI(ui->maxiBox->text().toDouble());
+
+    // auto speed adjust
+    m_auto = false;
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
-}
-
-void MainWindow::exit()
-{
-    qApp->quit();
 }
 
 void MainWindow::UpdateFeedback(double trans, double speed)
@@ -92,6 +90,13 @@ void MainWindow::UpdateDist(float dist, float speed)
 {
     ui->distanceBox->setText(QString::number(dist));
     ui->speedBox->setText(QString::number(speed));
+
+    // send to controller
+    if(m_auto)
+    {
+        controller->pid.set_goal(speed * 6.67); // magic distance to rps number
+        ui->desiredLaunchBox->setText(QString::number(speed * 6.67));
+    }
 }
 
 void MainWindow::on_minDepthSlider_valueChanged(int value)
@@ -174,8 +179,12 @@ void MainWindow::on_maxiBox_returnPressed()
     controller->pid.setmaxI(ui->maxiBox->text().toDouble());
 }
 
-void MainWindow::closeEvent(QCloseEvent *event)
+void MainWindow::on_autoButton_clicked()
 {
-    qDebug() << "close";
-    this->exit();
+    m_auto = true;
+}
+
+void MainWindow::on_manualButton_clicked()
+{
+    m_auto = false;
 }

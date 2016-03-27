@@ -25,6 +25,7 @@ public:
     ~MainWindow();
 
 private:
+    bool m_auto;
     void exit();
 
     Ui::MainWindow *ui;
@@ -52,7 +53,8 @@ private slots:
     void on_pidReset_clicked();
     void on_desiredLaunchBox_returnPressed();
     void on_maxiBox_returnPressed();
-    void closeEvent(QCloseEvent *event);
+    void on_autoButton_clicked();
+    void on_manualButton_clicked();
 };
 
 #endif // MAINWINDOW_H
